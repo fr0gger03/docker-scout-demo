@@ -84,8 +84,9 @@ jobs:
         if: ${{ github.event_name != 'pull_request_target' }}
         uses: docker/scout-action@v1
         with:
-          command: cves
-          image: ${{ steps.meta.outputs.tags }}
+          command: cves,recommendations
+          only-fixed: true
+          # image: ${{ steps.meta.outputs.tags }}
           sarif-file: sarif.output.json
           platform: "linux/arm64"
           summary: true
@@ -103,7 +104,9 @@ jobs:
         uses: docker/scout-action@main
         with:
           command: compare
-          image: ${{ steps.meta.outputs.tags }}
+          command: cves,recommendations
+          only-fixed: true
+          # image: ${{ steps.meta.outputs.tags }}
           only-severities: critical,high
           to-env: prod
           platform: "linux/arm64"
