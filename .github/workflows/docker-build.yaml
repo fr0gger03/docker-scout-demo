@@ -104,7 +104,6 @@ jobs:
         uses: docker/scout-action@main
         with:
           command: compare
-          command: cves,recommendations
           only-fixed: true
           # image: ${{ steps.meta.outputs.tags }}
           only-severities: critical,high
