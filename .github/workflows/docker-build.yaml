@@ -9,9 +9,8 @@ on:
 
 env:
   REGISTRY: docker.io
-  # DOCKER_ORG: demonstrationorg
-  # IMAGE_NAME: demonstrationorg/ttwyman_docker_scout_demo
-  IMAGE_NAME: ${{ github.repository }}
+  DOCKER_ORG: demonstrationorg
+  IMAGE_NAME: demonstrationorg/ttwyman_docker_scout_demo
   SHA: ${{ github.event.pull_request.head.sha || github.event.after }}
   DOCKERFILE_PATH: Dockerfile
   COMPARE_TAG: latest
