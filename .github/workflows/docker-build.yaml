@@ -8,7 +8,7 @@ on:
     branches: ["main"]
 
 env:
-  REGISTRY: docker.io
+  REGISTRY: registry://docker.io
   DOCKER_ORG: demonstrationorg
   IMAGE_NAME: demonstrationorg/ttwyman_docker_scout_demo
   SHA: ${{ github.event.pull_request.head.sha || github.event.after }}
@@ -38,7 +38,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: registry://${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # images: registry://${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           labels: |
             org.opencontainers.image.revision=${{ env.SHA }}
             com.docker.image.source.entrypoint=${{ env.DOCKERFILE_PATH }}
