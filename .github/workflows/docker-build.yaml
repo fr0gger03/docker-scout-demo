@@ -13,7 +13,7 @@ env:
   IMAGE_NAME: demonstrationorg/ttwyman_docker_scout_demo
   SHA: ${{ github.event.pull_request.head.sha || github.event.after }}
   DOCKERFILE_PATH: Dockerfile
-  COMPARE_TAG: latest
+  # COMPARE_TAG: latest
 
 jobs:
   build:
