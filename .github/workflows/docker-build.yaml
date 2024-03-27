@@ -13,7 +13,7 @@ env:
   IMAGE_NAME: demonstrationorg/ttwyman_docker_scout_demo
   SHA: ${{ github.event.pull_request.head.sha || github.event.after }}
   DOCKERFILE_PATH: Dockerfile
-  # COMPARE_TAG: latest
+  COMPARE_TAG: latest
 
 jobs:
   build:
@@ -38,7 +38,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: registry://${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           labels: |
             org.opencontainers.image.revision=${{ env.SHA }}
             com.docker.image.source.entrypoint=${{ env.DOCKERFILE_PATH }}
@@ -68,8 +68,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: "linux/arm64"
-          sbom: false
-          provenance: false      
+          sbom: true
+          provenance: true      
 
       - name: Analyze for critical and high CVEs
         id: docker-scout-cves
@@ -78,7 +78,7 @@ jobs:
         with:
           command: cves,recommendations
           only-fixed: true
-          # image: ${{ steps.meta.outputs.tags }}
+          image: ${{ steps.meta.outputs.tags }}
           platform: "linux/arm64"
           summary: true
       
@@ -89,7 +89,7 @@ jobs:
         with:
           command: compare
           only-fixed: true
-          # image: ${{ steps.meta.outputs.tags }}
+          image: ${{ steps.meta.outputs.tags }}
           only-severities: critical,high
           to-env: prod
           platform: "linux/arm64"
