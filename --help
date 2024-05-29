@@ -1,0 +1,8 @@
+
+  Target     │  local://docker:dind  │    0C     0H     5M     0L     1?   
+    digest   │  b297701767fa         │                                     
+  Base image │  alpine:3             │    0C     0H     0M     0L     1?   
+
+What's Next?
+  View vulnerabilities → docker scout cves local://docker:dind
+  Include policy results in your quickview by supplying an organization → docker scout quickview local://docker:dind --org <organization>
