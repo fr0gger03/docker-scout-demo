@@ -77,9 +77,11 @@ jobs:
         uses: docker/scout-action@v1
         with:
           command: cves,recommendations
-          only-fixed: true
+          # only-fixed: true
           image: ${{ steps.meta.outputs.tags }}
           platform: "linux/arm64"
+          exit-code: true
+          exit-on: vulnerability, policy
           summary: true
       
       - name: Compare to deployed image
