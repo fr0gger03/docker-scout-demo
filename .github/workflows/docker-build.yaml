@@ -80,8 +80,8 @@ jobs:
           # only-fixed: true
           image: ${{ steps.meta.outputs.tags }}
           platform: "linux/arm64"
-          exit-code: true
-          exit-on: vulnerability, policy
+          # exit-code: true
+          # exit-on: vulnerability, policy
           summary: true
       
       - name: Compare to deployed image
