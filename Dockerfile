@@ -1,5 +1,5 @@
-# FROM alpine:3.14.1
-FROM alpine:3.20
+FROM alpine:3.14.1
+# FROM alpine:latest
 
 ENV BLUEBIRD_WARNINGS=0 \
   NODE_ENV=production \
@@ -9,6 +9,8 @@ ENV BLUEBIRD_WARNINGS=0 \
 
 RUN apk add --no-cache \
   nodejs
+
+# USER appuser
 
 COPY package.json ./
 
@@ -22,4 +24,3 @@ COPY . /app
 CMD ["node","/app/app.js"]
 
 EXPOSE 3000
-# USER appuser
