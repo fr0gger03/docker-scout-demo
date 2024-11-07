@@ -13,10 +13,10 @@
     "lint": "eslint \"**/*.js\""
   },
   "dependencies": {
-    "express": "4.20"
+    "express": "4.17.1"
   },
   "devDependencies": {
-    "chai": "^4.17.1",
+    "chai": "^4.2.0",
     "eslint": "^7.17.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-chai-friendly": "^0.6.0",
