@@ -17,8 +17,9 @@ git pull
 git checkout -b $BRANCH_NAME
 
 echo "==> Applying patch and creating a commit"
-git apply --whitespace=fix "${SCRIPT_DIR}/demo.patch"
-git commit -am "reset repo to introduce vulns for demo"
+npm install express@4.17.1 --save
+git apply --whitespace=fix "${SCRIPT_DIR}/dockerfile.patch"
+git commit -sam "reset repo to introduce vulns for demo"
 
 echo "==> Configure / ensure use of local builder"
 docker buildx use desktop-linux
