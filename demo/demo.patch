@@ -1,0 +1,55 @@
+diff --git a/Dockerfile b/Dockerfile
+index d83deb3..df45fa3 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -1,26 +1,26 @@
+-FROM alpine:3.14.1
+-# FROM alpine:latest
++# FROM alpine:3.14.1
++FROM alpine:latest
+ 
+ ENV BLUEBIRD_WARNINGS=0 \
+   NODE_ENV=production \
+   NODE_NO_WARNINGS=1 \
+   NPM_CONFIG_LOGLEVEL=warn \
+   SUPPRESS_NO_CONFIG_WARNING=true
+-
++  
+ RUN apk add --no-cache \
+-  nodejs
++nodejs
+ 
+-# USER appuser
+ 
+ COPY package.json ./
+ 
+ RUN  apk add --no-cache npm \
+- && npm i --no-optional \
+- && npm cache clean --force \
+- && apk del npm
+- 
++&& npm i --no-optional \
++&& npm cache clean --force \
++&& apk del npm
++  
++USER appuser
+ COPY . /app
+-
++  
+ CMD ["node","/app/app.js"]
+ 
+ EXPOSE 3000
+\ No newline at end of file
+diff --git a/package.json b/package.json
+index 463a9dd..414a981 100644
+--- a/package.json
++++ b/package.json
+@@ -13,7 +13,7 @@
+     "lint": "eslint \"**/*.js\""
+   },
+   "dependencies": {
+-    "express": "4.17.1"
++    "express": "^4.20.0"
+   },
+   "devDependencies": {
+     "chai": "^4.2.0",
