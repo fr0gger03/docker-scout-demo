@@ -12,8 +12,3 @@ git branch -D main
 git checkout origin/main
 git checkout -b main
 git push -u origin main --force
-
-
-# echo "==> Applying patch and creating a commit"
-# git apply --whitespace=fix "${SCRIPT_DIR}/clean.patch"
-# git commit -am "reset repo to remove vulns from repo"
