@@ -1,5 +1,5 @@
-# FROM alpine:3.14.1
-FROM alpine:latest
+FROM alpine:3.14.1
+# FROM alpine:latest
 
 ENV BLUEBIRD_WARNINGS=0 \
   NODE_ENV=production \
@@ -18,7 +18,7 @@ RUN  apk add --no-cache npm \
 && npm cache clean --force \
 && apk del npm
   
-USER appuser
+# USER appuser
 COPY . /app
   
 CMD ["node","/app/app.js"]
