@@ -10,7 +10,6 @@ ENV BLUEBIRD_WARNINGS=0 \
 RUN apk add --no-cache \
 nodejs
 
-
 COPY package.json ./
 
 RUN  apk add --no-cache npm \
