@@ -6,7 +6,7 @@ ENV BLUEBIRD_WARNINGS=0 \
   NODE_NO_WARNINGS=1 \
   NPM_CONFIG_LOGLEVEL=warn \
   SUPPRESS_NO_CONFIG_WARNING=true
-  
+
 RUN apk add --no-cache \
 nodejs
 

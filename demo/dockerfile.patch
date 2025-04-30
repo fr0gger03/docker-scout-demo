@@ -1,0 +1,21 @@
+diff --git a/Dockerfile b/Dockerfile
+index 9c6678c..257ced6 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -1,5 +1,5 @@
+-# FROM alpine:3.14.1
+-FROM alpine:latest
++FROM alpine:3.14.1
++# FROM alpine:latest
+ 
+ ENV BLUEBIRD_WARNINGS=0 \
+   NODE_ENV=production \
+@@ -17,7 +17,7 @@ RUN  apk add --no-cache npm \
+ && npm cache clean --force \
+ && apk del npm
+   
+-USER appuser
++# USER appuser
+ COPY . /app
+   
+ CMD ["node","/app/app.js"]
